@@ -22,6 +22,12 @@ class DefaultController
 	*/
 	public function register()
 	{
+		// si on a rempli le formulaire
+		if(!empty($_POST)){
+
+
+		}
+
 		View::show('register.php', "Register");
 	}
 

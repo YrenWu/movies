@@ -2,5 +2,5 @@
 	Sign in :
 	<input type="text" name="name" value="" placeholder="John Doe">
 	<input type="password" name="passwd" >
-	<input type="submit" name="" value="Login" >
+	<input type="submit" name="" value="Login" ><a href="<?= BASE_URL ?>register">Register</a>
 </form>

@@ -16,7 +16,7 @@
 <h1>Home page</h1>
 
 <h3>List of movies </h3>
-<!-- 
+<!-- Commenté car fait laguer la page
 	<?php foreach ($movies as $movie) { ?> 
 		<article>
 			<a href="<?=BASE_URL?>details?id=<?= $movie->getId()?>">	
