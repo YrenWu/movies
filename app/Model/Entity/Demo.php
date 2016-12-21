@@ -33,10 +33,12 @@ class Demo
 		//valider les données de l'instance ici 
 		if(strlen($this->plot < 10)){
 			$isValid = false;
+			$this->validationErrors[] = "Please enter a longer plot";
 		}
 
 		if($this->year < 1900){
 			$isValid = false;
+			$this->validationErrors[] = "Please enter valid year";
 		}
 
 		return $isValid;

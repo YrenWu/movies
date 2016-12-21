@@ -4,7 +4,9 @@ namespace Controller;
 
 use View\View; //on peut donc utiliser cette classe comme View au lieu de \View\View
 use Model\Entity\Demo;
+use Model\Entity\User;
 use Model\Manager\DemoManager;
+use Model\Manager\UserManager;
 
 class DefaultController 
 {
@@ -22,13 +24,25 @@ class DefaultController
 	*/
 	public function register()
 	{
+		$user = new User();
 		// si on a rempli le formulaire
 		if(!empty($_POST)){
+			$userManager = new UserManager();
+		
 
+			$user->setName(htmlentities($_POST['name']));
+			$user->setEmail(htmlentities($_POST['email']));
 
+			if($_POST['passwd1'] === $_POST['passwd1']) {
+				$user->setPasswd(htmlentities($_POST['passwd1']));
+			}
+
+			if($user->isValid()){
+				$userManager->insert($user);
+			}
 		}
 
-		View::show('register.php', "Register");
+		View::show('register.php', "Register", ["user" => $user]);
 	}
 
 	/**
