@@ -1,4 +1,4 @@
-	<form action="search" method="post" accept-charset="utf-8">
+	<form action="<?=BASE_URL?>" method="post" accept-charset="utf-8">
 		<fieldset class="forms">
 			<legend>Search by genre</legend>
 			<input type="text" name="genre" placeholder="Western, Sci-Fi, Horror...">

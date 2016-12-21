@@ -18,5 +18,4 @@
 		"/" => "home",
 		"/user/watchlist" => "watchlist",
 		"/details" => "details",
-		"/search" => "search" , 
 	];

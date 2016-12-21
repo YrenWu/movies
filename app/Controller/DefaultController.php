@@ -15,20 +15,6 @@ class DefaultController
 	public function search()
 	{
 
-		$movies = [];
-		$demoManager = new DemoManager();
-
-		if(!empty($_POST['date'])){
-			$date = htmlentities($_POST['date']);
-			$movies = $demoManager->findByDate($date);
-		} 
-
-		if(!empty($_POST['genre'])){
-			$genre = htmlentities($_POST['genre']);
-			$movies = $demoManager->findByGenre($genre);
-		}
-		var_dump($movies);
-
 	}
 
 	/**
@@ -45,7 +31,7 @@ class DefaultController
 			header("HTTP/1.0 404 Not Found");
 			return $this->error404();
 		} else {
-			View::show('details.php', "Détails", ['movie' => $movie]);
+			View::show('details.php', "Details", ['movie' => $movie]);
 		}
 	}
 
@@ -55,13 +41,24 @@ class DefaultController
 	public function home()
 	{
 		
-		$movieManager = new  DemoManager();
-		$movies = $movieManager->findAll();
-			// $postManager = new PostManager();
-			// $posts = $postManager->findAll();
+		$movies = [];
+		$movieManager = new DemoManager();
 
-			// View::render('home.php', "Accueil", ["posts" => $posts]);
-		View::show("home.php", "Accueil !", ["movies" => $movies]);
+		if(!empty($_POST['date'])){ // si recherche par date
+			$date = htmlentities($_POST['date']);
+			$movies = $movieManager->findByDate($date);
+		} 
+
+		else if(!empty($_POST['genre'])){ // si recherche par genre
+			$genre = htmlentities($_POST['genre']);
+			$movies = $movieManager->findByGenre($genre);
+		}
+
+		else { // si pas de recherche on affiche tout
+			$movies = $movieManager->findAll(); 
+		}
+
+		View::show("home.php", "Home page !", ["movies" => $movies]);
 	}
 
 	/**
@@ -71,7 +68,7 @@ class DefaultController
 	{
 		//envoie une entête 404 (pour notifier les clients que ça a foiré)
 		header("HTTP/1.0 404 Not Found");
-		View::show("errors/404.php", "Oups ! Perdu ?");
+		View::show("errors/404.php", "Oups ! Lost ?");
 	}
 
 	/**
@@ -79,7 +76,7 @@ class DefaultController
 	 */
 	public function watchlist()
 	{
-		View::show("user/watchlist.php", "Oups ! Perdu ?");
+		View::show("user/watchlist.php", "WatchList?");
 	}
 }
 
