@@ -1,9 +1,9 @@
-	
+
 <!-- 	formulaire de recherche par date (année) ou par genre -->
 	<form action="<?=BASE_URL?>" method="post" accept-charset="utf-8">
 		<fieldset class="forms">
-			<legend>Search by genre</legend>
-			<input type="text" name="genre" placeholder="Western, Sci-Fi, Horror...">
+			<legend>Search by keywords</legend>
+			<input type="text" name="keyword" placeholder="Western, Sci-Fi, Horror...">
 			<input type="submit" value="Search">
 		</fieldset>
 		<fieldset class="forms">
@@ -16,14 +16,14 @@
 <h1>Home page</h1>
 
 <h3>List of movies </h3>
-
+<!-- 
 	<?php foreach ($movies as $movie) { ?> 
 		<article>
 			<a href="<?=BASE_URL?>details?id=<?= $movie->getId()?>">	
 			<img class="thumbnail" src="<?= PICS_DIR . $movie->getImdbId() . ".jpg" ?>" alt="<?= $movie->getTitle() ?>"></a>
 
 		</article>
-	<?php } ?>
+	<?php } ?> -->
 
 <!-- // ### Accueil
 // La liste est paginée.-->

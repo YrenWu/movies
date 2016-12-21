@@ -11,6 +11,17 @@ use PDO;
  */
 class DemoManager
 {
+	public function insert(Demo $movie)
+	{
+		//$sql = "INSERT INTO movies () VALUES ()";
+	}
+
+	public function update(Demo $movie)
+	{
+
+	}
+
+
 	public function delete($id)
 	{
 		$sql = "DELETE FROM movies WHERE id=:id";
@@ -25,7 +36,8 @@ class DemoManager
 	public function findByDate($date)
 	{
 		$sql = "SELECT *
-				FROM movies WHERE year = :year";
+				FROM movies WHERE year = :year 
+				ORDER BY rating DESC";
 
 		$dbh = Db::getDbh();
 
@@ -37,9 +49,23 @@ class DemoManager
 		return $results;
 	}
 
-	public function findByGenre($genre)
+	public function findByKeyword($word)
 	{
+		$sql = "SELECT * FROM movies AS m 
+				INNER JOIN movies_genres AS mg ON mg.movieId=m.id 
+				INNER JOIN genres AS g ON g.id=mg.genreId 
+				WHERE g.name = :word 
+				ORDER BY rating DESC";
 
+		$dbh = Db::getDbh();
+
+		$stmt = $dbh->prepare($sql);
+		$stmt->bindValue(":word", $word);
+		$stmt->execute();
+
+		$results = $stmt->fetchAll(\PDO::FETCH_CLASS, '\Model\Entity\Demo');
+
+		return $results;
 	}
 
 	public function findAll() 

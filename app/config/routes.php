@@ -20,4 +20,5 @@
 		"/details" => "details",
 		"/admin/manage" => "manage",
 		"/admin/delete" => "delete",
+		"/register" => "register",
 	];

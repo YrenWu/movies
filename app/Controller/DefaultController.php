@@ -17,7 +17,17 @@ class DefaultController
 		$this->movieManager = new DemoManager();
 	}
 
+	/**
+	* Inscription sur le site
+	*/
+	public function register()
+	{
+		View::show('register.php', "Register");
+	}
 
+	/**
+	* 	fonctions CRUD pour l'admin
+	*/
 	public function delete()
 	{
 		if(!empty($_GET)) {
@@ -65,9 +75,9 @@ class DefaultController
 			$movies = $this->movieManager->findByDate($date);
 		} 
 
-		else if(!empty($_POST['genre'])){ // si recherche par genre
-			$genre = htmlentities($_POST['genre']);
-			$movies = $this->movieManager->findByGenre($genre);
+		else if(!empty($_POST['keyword'])){ // si recherche par genre
+			$keyword = htmlentities($_POST['keyword']);
+			$movies = $this->movieManager->findByKeyword($keyword);
 		}
 
 		else { // si pas de recherche on affiche tout
