@@ -21,15 +21,11 @@ class DefaultController
 	public function delete()
 	{
 		if(!empty($_GET)) {
-			var_dump($_GET);
-			die;
-
-			// $id = htmlentities($_GET['id']);
-
-			// $postManager = new PostManager();
-			// $postManager->delete($id);
+			$id = htmlentities($_GET['id']);
+			$this->movieManager->delete($id);
 		}
-		header("Location: " . BASE_URL . "home");
+		//redirige vers la page
+		header("Location: " . BASE_URL . "admin/manage"); 
 	}
 
 

@@ -13,7 +13,7 @@ class DemoManager
 {
 	public function delete($id)
 	{
-		$sql = "DELETE FROM movie WHERE id=:id";
+		$sql = "DELETE FROM movies WHERE id=:id";
 
 		$dbh = Db::getDbh();
 
