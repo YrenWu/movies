@@ -19,7 +19,8 @@ class Demo
 	private $runtime;
 	private $dateCreated;
 	private $dateModified;
-
+	private $plot;
+	private $writers;
 
 
 	/**
@@ -151,6 +152,26 @@ class Demo
 	public function setDateModified($dateModified)
 	{
 	    $this->dateModified = $dateModified;
+	}
+
+	public function getPlot()
+	{
+	    return $this->plot;
+	}
+	 
+	public function setPlot($plot)
+	{
+	    $this->plot = $plot;
+	}
+	
+	public function getWriters()
+	{
+	    return $this->writers;
+	}
+	 
+	public function setWriters($writers)
+	{
+	    $this->writers = $writers;
 	}
 
 }
