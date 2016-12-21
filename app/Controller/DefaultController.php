@@ -10,6 +10,28 @@ class DefaultController
 {
 
 	/**
+	*	liste les films trouvés par le formulaire de recherche
+	*/
+	public function search()
+	{
+
+		$movies = [];
+		$demoManager = new DemoManager();
+
+		if(!empty($_POST['date'])){
+			$date = htmlentities($_POST['date']);
+			$movies = $demoManager->findByDate($date);
+		} 
+
+		if(!empty($_POST['genre'])){
+			$genre = htmlentities($_POST['genre']);
+			$movies = $demoManager->findByGenre($genre);
+		}
+		var_dump($movies);
+
+	}
+
+	/**
 	* affiche un film dans le détail
 	*/
 	public function details()

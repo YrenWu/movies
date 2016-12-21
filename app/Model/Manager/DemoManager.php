@@ -11,20 +11,40 @@ use PDO;
  */
 class DemoManager
 {
+	public function findByDate($date)
+	{
+		$sql = "SELECT *
+				FROM movies WHERE year = :year";
+
+		$dbh = Db::getDbh();
+
+		$stmt = $dbh->prepare($sql);
+		$stmt->bindValue(":year", $date);
+		$stmt->execute();
+
+		$results = $stmt->fetchAll(\PDO::FETCH_CLASS, '\Model\Entity\Demo');
+		return $results;
+	}
+
+	public function findByGenre($genre)
+	{
+		
+	}
+
 	public function findAll() 
-		{
-			$sql = "SELECT imdbId, id
-					FROM movies ORDER BY rating DESC";
+	{
+		$sql = "SELECT imdbId, id
+				FROM movies ORDER BY rating DESC";
 
-			$dbh = Db::getDbh();
+		$dbh = Db::getDbh();
 
-			$stmt = $dbh->prepare($sql);
-			$stmt->execute();
+		$stmt = $dbh->prepare($sql);
+		$stmt->execute();
 
-			$results = $stmt->fetchAll(\PDO::FETCH_CLASS, '\Model\Entity\Demo');
+		$results = $stmt->fetchAll(\PDO::FETCH_CLASS, '\Model\Entity\Demo');
 
-			return $results;
-		}	
+		return $results;
+	}	
 
 	public function findOne($id)
 	{
@@ -41,5 +61,5 @@ class DemoManager
 		$result = $stmt->fetchObject('\Model\Entity\Demo');
 
 		return $result;
-		}
+	}
 }

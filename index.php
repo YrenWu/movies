@@ -38,7 +38,7 @@
 // 	- ajouter/modifier/supprimer des films de la base de données. Il a besoin d'une interface web.
 
 // ### Détails d'un film
-// - Toutes les infos sur le film sont affichées
+// - Infos à mettre en forme
 // - Un widget permettant de donner une note sur 10 (ie. style étoiles) (connectés seulement)
 // - Un bouton permet d'ajouter/supprimer de sa watchlist (connectés seulement)
 // - Un formulaire permet de partager par email le film (connectés seulement)
