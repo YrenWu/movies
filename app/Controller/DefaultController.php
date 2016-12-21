@@ -9,6 +9,36 @@ use Model\Manager\DemoManager;
 class DefaultController 
 {
 
+	private $movieManager;
+
+
+	public function __construct()
+	{
+		$this->movieManager = new DemoManager();
+	}
+
+
+	public function delete()
+	{
+		if(!empty($_GET)) {
+			var_dump($_GET);
+			die;
+
+			// $id = htmlentities($_GET['id']);
+
+			// $postManager = new PostManager();
+			// $postManager->delete($id);
+		}
+		header("Location: " . BASE_URL . "home");
+	}
+
+
+	public function manage() // fonction qui affiche le panneau d'admin
+	{
+		$movies = $this->movieManager->findAll();
+
+		View::show('admin/manage.php', "Manage your movies", ['movies' => $movies]);
+	}
 	/**
 	* affiche un film dans le détail
 	*/
@@ -16,8 +46,7 @@ class DefaultController
 	{
 		$id = htmlentities($_GET["id"]);
 
-		$demoManager = new DemoManager();
-		$movie = $demoManager->findOne($id);
+		$movie = $this->movieManager->findOne($id);
 			
 		if(empty($movie)){
 			header("HTTP/1.0 404 Not Found");
@@ -34,20 +63,19 @@ class DefaultController
 	{
 		
 		$movies = [];
-		$movieManager = new DemoManager();
 
 		if(!empty($_POST['date'])){ // si recherche par date
 			$date = htmlentities($_POST['date']);
-			$movies = $movieManager->findByDate($date);
+			$movies = $this->movieManager->findByDate($date);
 		} 
 
 		else if(!empty($_POST['genre'])){ // si recherche par genre
 			$genre = htmlentities($_POST['genre']);
-			$movies = $movieManager->findByGenre($genre);
+			$movies = $this->movieManager->findByGenre($genre);
 		}
 
 		else { // si pas de recherche on affiche tout
-			$movies = $movieManager->findAll(); 
+			$movies = $this->movieManager->findAll(); 
 		}
 
 		View::show("home.php", "Home page !", ["movies" => $movies]);

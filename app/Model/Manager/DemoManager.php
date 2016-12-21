@@ -11,6 +11,17 @@ use PDO;
  */
 class DemoManager
 {
+	public function delete($id)
+	{
+		$sql = "DELETE FROM movie WHERE id=:id";
+
+		$dbh = Db::getDbh();
+
+		$stmt = $dbh->prepare($sql);
+		$stmt->bindValue(':id', $id);
+		$stmt->execute();
+	}
+
 	public function findByDate($date)
 	{
 		$sql = "SELECT *
@@ -28,12 +39,12 @@ class DemoManager
 
 	public function findByGenre($genre)
 	{
-		
+
 	}
 
 	public function findAll() 
 	{
-		$sql = "SELECT imdbId, id
+		$sql = "SELECT imdbId, id, title
 				FROM movies ORDER BY rating DESC";
 
 		$dbh = Db::getDbh();

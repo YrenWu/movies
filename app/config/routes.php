@@ -18,4 +18,6 @@
 		"/" => "home",
 		"/user/watchlist" => "watchlist",
 		"/details" => "details",
+		"/admin/manage" => "manage",
+		"/admin/delete" => "delete",
 	];

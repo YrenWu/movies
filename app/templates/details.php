@@ -27,5 +27,6 @@
 
 	<!-- partager une fiche de film si loggué -->
 	<!-- ajout à la watchlist si loggué -->
-	
+	<!-- noter un film, si le film est pas déja noté -->
+
 </article>
