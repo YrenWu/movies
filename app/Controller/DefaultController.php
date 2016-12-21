@@ -10,14 +10,6 @@ class DefaultController
 {
 
 	/**
-	*	liste les films trouvés par le formulaire de recherche
-	*/
-	public function search()
-	{
-
-	}
-
-	/**
 	* affiche un film dans le détail
 	*/
 	public function details()

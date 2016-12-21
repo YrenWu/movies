@@ -1,3 +1,5 @@
+	
+<!-- 	formulaire de recherche par date (année) ou par genre -->
 	<form action="<?=BASE_URL?>" method="post" accept-charset="utf-8">
 		<fieldset class="forms">
 			<legend>Search by genre</legend>
@@ -24,6 +26,4 @@
 	<?php } ?>
 
 <!-- // ### Accueil
-// La liste est paginée.
-// - 2 formulaires au haut de la page permettent de rechercher par mot-clef, 
-// par genre de film ou de filtrer par date -->
+// La liste est paginée.-->
