@@ -1,4 +1,4 @@
-<form action="login.php" method="post" accept-charset="utf-8">
+<form action="login" method="post" accept-charset="utf-8">
 	Sign in :
 	<input type="text" name="name" value="" placeholder="John Doe">
 	<input type="password" name="passwd" >

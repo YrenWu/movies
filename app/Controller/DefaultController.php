@@ -19,6 +19,15 @@ class DefaultController
 		$this->movieManager = new DemoManager();
 	}
 
+	/** fonction pour se logguer
+	* 
+	*/
+	public function login()
+	{
+		// vérifier que le pass entré hashé en md5 correspond à celui de la 
+		// bdd (john doe = plopplopplop et jane doe = azertyuiop pour tests)
+	}
+
 	/**
 	* Inscription sur le site
 	*/
@@ -38,7 +47,9 @@ class DefaultController
 			}
 
 			if($user->isValid()){
-				$userManager->insert($user);
+				$userManager->insert($user); 
+				// si tout est ok on insère dans la db
+				header("Location: " . BASE_URL); 	
 			}
 		}
 

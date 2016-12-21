@@ -38,3 +38,4 @@
 
 	// fonction isvalid etpour le crud de demo (movies) et user
 	// class user et usermanager
+	// faire messages de validation après redirection
