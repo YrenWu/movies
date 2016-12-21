@@ -13,7 +13,7 @@ class DemoManager
 	public function findAll() 
 		{
 			$sql = "SELECT * 
-					FROM movies";
+					FROM movies ORDER BY rating DESC";
 
 			$dbh = Db::getDbh();
 
