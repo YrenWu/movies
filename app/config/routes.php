@@ -16,5 +16,5 @@
 
 	$routes = [
 		"/" => "home",
-		"/watchlist" => "watchlist",
+		"/user/watchlist" => "watchlist",
 	];
