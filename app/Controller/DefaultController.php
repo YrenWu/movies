@@ -28,5 +28,13 @@ class DefaultController
 		header("HTTP/1.0 404 Not Found");
 		View::show("errors/404.php", "Oups ! Perdu ?");
 	}
+
+	/**
+	 * Affiche la watchlist
+	 */
+	public function watchlist()
+	{
+		
+	}
 }
 

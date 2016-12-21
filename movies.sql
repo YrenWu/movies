@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Dec 21, 2016 at 09:37 AM
+-- Generation Time: Dec 21, 2016 at 09:54 AM
 -- Server version: 10.1.7-MariaDB-1~jessie-log
 -- PHP Version: 5.6.27-0+deb8u1
 
@@ -1457,7 +1457,8 @@ CREATE TABLE IF NOT EXISTS `rate` (
 CREATE TABLE IF NOT EXISTS `user` (
 `id` int(11) NOT NULL,
   `name` varchar(255) NOT NULL,
-  `pass` varchar(255) NOT NULL
+  `pass` varchar(255) NOT NULL,
+  `watchlist` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --

@@ -10,13 +10,9 @@
 
 		<?php //include le fichier spécifié à la fin des méthodes de contrôleurs ?>
 		<?php include("app/templates/$page.php") ?>
+		<a href="<?= BASE_URL ?>watchlist.php">
+		<!-- lien vers la watchlist on pourra le cacher plus tard si n'est pas loggué -->
 	
 	</div>
 </body>
 </html>
-
-<!-- // ### Watchlist
-// - Un lien omniprésent permet d'afficher la watchlist 
-// (même présentation sous forme d'affiches que la page d'accueil). La liste est également paginée. 
-// Connectés seulement bien sûr. 
- -->
