@@ -21,6 +21,21 @@ class User
 		$isValid = true;
 
 		//valider les données de l'instance ici 
+		if(empty($this->name)){
+			$isValid = false;
+			$this->validationErrors = "Please enter your name";
+		}
+
+		if(strlen($this->passwd) < 10){
+			$isValid = false;
+			$this->validationErrors = "Your password is too weak";
+		}
+
+		$email = filter_var($this->email, FILTER_VALIDATE_EMAIL);
+		if(empty($email)){
+			$isValid = false;
+			$this->validationErrors = "Please enter a valid e-mail";
+		}
 
 		return $isValid;
 	}

@@ -35,3 +35,6 @@
 // - Un widget permettant de donner une note sur 10 (ie. style étoiles) (connectés seulement)
 // - Un bouton permet d'ajouter/supprimer de sa watchlist (connectés seulement)
 // - Un formulaire permet de partager par email le film (connectés seulement)
+
+	// fonction isvalid etpour le crud de demo (movies) et user
+	// class user et usermanager

@@ -31,6 +31,13 @@ class Demo
 		$isValid = true;
 
 		//valider les données de l'instance ici 
+		if(strlen($this->plot < 10)){
+			$isValid = false;
+		}
+
+		if($this->year < 1900){
+			$isValid = false;
+		}
 
 		return $isValid;
 	}
