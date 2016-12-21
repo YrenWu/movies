@@ -8,6 +8,25 @@ use Model\Manager\DemoManager;
 
 class DefaultController 
 {
+
+	/**
+	* affiche un film dans le détail
+	*/
+	public function details()
+	{
+		$id = htmlentities($_GET["id"]);
+
+		$demoManager = new DemoManager();
+		$movie = $demoManager->findOne($id);
+			
+		if(empty($movie)){
+			header("HTTP/1.0 404 Not Found");
+			return $this->error404();
+		} else {
+			View::show('details.php', "Détails", ['movie' => $movie]);
+		}
+	}
+
 	/**
 	 * Affiche la page d'accueil
 	 */

@@ -4,7 +4,8 @@
 
 	<?php foreach ($movies as $movie) { ?> 
 		<article>
-			<a href=""><img class="thumbnail" src="<?= PICS_DIR . $movie->getImdbId() . ".jpg" ?>" alt="<?= $movie->getTitle() ?>"></a>
+			<a href="<?=BASE_URL?>details?id=<?= $movie->getId()?>">	
+			<img class="thumbnail" src="<?= PICS_DIR . $movie->getImdbId() . ".jpg" ?>" alt="<?= $movie->getTitle() ?>"></a>
 
 		</article>
 	<?php } ?>

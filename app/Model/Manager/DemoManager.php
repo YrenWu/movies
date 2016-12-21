@@ -3,6 +3,7 @@
 namespace Model\Manager;
 
 use Model\Db;
+
 use PDO;
 
 /**
@@ -12,7 +13,7 @@ class DemoManager
 {
 	public function findAll() 
 		{
-			$sql = "SELECT * 
+			$sql = "SELECT imdbId, id
 					FROM movies ORDER BY rating DESC";
 
 			$dbh = Db::getDbh();
@@ -24,4 +25,21 @@ class DemoManager
 
 			return $results;
 		}	
+
+	public function findOne($id)
+	{
+		$sql = "SELECT *
+				FROM movies 
+				WHERE id= :id";
+
+		$dbh = Db::getDbh();
+
+		$stmt = $dbh->prepare($sql);
+		$stmt->bindValue(":id", $id);
+		$stmt->execute();
+
+		$result = $stmt->fetchObject('\Model\Entity\Demo');
+
+		return $result;
+		}
 }
