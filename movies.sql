@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Dec 21, 2016 at 09:54 AM
+-- Generation Time: Dec 21, 2016 at 10:05 AM
 -- Server version: 10.1.7-MariaDB-1~jessie-log
 -- PHP Version: 5.6.27-0+deb8u1
 
@@ -1451,14 +1451,17 @@ CREATE TABLE IF NOT EXISTS `rate` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `user`
+-- Table structure for table `users`
 --
 
-CREATE TABLE IF NOT EXISTS `user` (
+CREATE TABLE IF NOT EXISTS `users` (
 `id` int(11) NOT NULL,
   `name` varchar(255) NOT NULL,
   `pass` varchar(255) NOT NULL,
-  `watchlist` varchar(255) NOT NULL
+  `email` varchar(255) NOT NULL,
+  `watchlist` varchar(255) NOT NULL,
+  `admin` tinyint(1) NOT NULL,
+  `token` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -1484,9 +1487,9 @@ ALTER TABLE `rate`
  ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `user`
+-- Indexes for table `users`
 --
-ALTER TABLE `user`
+ALTER TABLE `users`
  ADD PRIMARY KEY (`id`);
 
 --
@@ -1509,9 +1512,9 @@ MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=471;
 ALTER TABLE `rate`
 MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 --
--- AUTO_INCREMENT for table `user`
+-- AUTO_INCREMENT for table `users`
 --
-ALTER TABLE `user`
+ALTER TABLE `users`
 MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
