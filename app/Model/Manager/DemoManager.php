@@ -10,4 +10,19 @@ use PDO;
  */
 class DemoManager
 {
+	public function findAll() 
+		{
+			$sql = "SELECT * 
+					FROM movies";
+			echo("plop");
+
+			$dbh = Db::getDbh();
+
+			$stmt = $dbh->prepare($sql);
+			$stmt->execute();
+
+			$results = $stmt->fetchAll(\PDO::FETCH_CLASS, '\Model\Entity\Demo');
+
+			return $results;
+		}	
 }

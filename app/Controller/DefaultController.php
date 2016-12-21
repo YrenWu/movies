@@ -3,6 +3,8 @@
 namespace Controller;
 
 use View\View; //on peut donc utiliser cette classe comme View au lieu de \View\View
+use Model\Entity\Demo;
+use Model\Manager\DemoManager;
 
 class DefaultController 
 {
@@ -10,8 +12,10 @@ class DefaultController
 	 * Affiche la page d'accueil
 	 */
 	public function home()
-
-
+	{
+		
+		$movieManager = new  DemoManager();
+		$movies = $movieManager->findAll();
 			// $postManager = new PostManager();
 			// $posts = $postManager->findAll();
 
@@ -34,7 +38,7 @@ class DefaultController
 	 */
 	public function watchlist()
 	{
-		
+		View::show("user/watchlist.php", "Oups ! Perdu ?");
 	}
 }
 

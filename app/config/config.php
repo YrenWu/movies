@@ -6,8 +6,8 @@
 
 	//infos de connexion à la db
 	const DB_HOST = "localhost";
-	const DB_NAME = "";
+	const DB_NAME = "movies";
 	const DB_USER = "root";
-	const DB_PASS = "";
+	const DB_PASS = "imie";
 
 	
