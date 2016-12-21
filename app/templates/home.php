@@ -1,10 +1,13 @@
-<h1>Accueil !</h1>
+<h1>Home page</h1>
 
-<h3>Liste des films </h3>
+<h3>List of movies </h3>
 
 	<?php foreach ($movies as $movie) { ?> 
 		<article>
-			<h2><?= $movie->getTitle() ?></h2></a>
+			<h5><?= $movie->getTitle() ?></h5>
+			<?= $movie->getDirectors() ?><br>
+			<?= $movie->getYear() ?> <?= $movie->getRating() ?>
+
 		</article>
 	<?php } ?>
 

@@ -14,7 +14,6 @@ class DemoManager
 		{
 			$sql = "SELECT * 
 					FROM movies";
-			echo("plop");
 
 			$dbh = Db::getDbh();
 
