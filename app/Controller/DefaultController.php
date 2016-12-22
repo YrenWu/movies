@@ -44,16 +44,16 @@ class DefaultController
 			if(password_verify($_POST['passwd'], $user->getPasswd())){ 
 				$_SESSION['user'] = $user; //ou user stocker le $user ; 
 				header("Location: ". BASE_URL);
-			}
+			} 
 		}
-
-
 	}
 
 	public function logout()
 	{
 		// deconnexion 
+		unset($_SESSION['user']);
 		// redirection
+		header("Location: ". BASE_URL);
 	}
 
 	// fonction qui liste tous les utilisateurs pour suppression 
