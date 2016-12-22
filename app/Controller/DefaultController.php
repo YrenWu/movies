@@ -26,13 +26,24 @@ class DefaultController
 	{
 		// vérifier que le pass entré hashé en md5 correspond à celui de la 
 		// bdd (john doe = plopplopplop et jane doe = azertyuiop pour tests)
+
 	}
 
+	// fonction qui liste tous les utilisateurs pour suppression 
+	// de compte dans le panneau admin (ça rigole pas)
+	public function userList()
+	{
+		$userManager = new UserManager();
+		$users = $userManager->findAll();
+
+		View::show('admin/userList.php', 'List of users', ['users' => $users]);
+	}
 	/**
 	* Inscription sur le site
 	*/
 	public function register()
 	{
+
 		$user = new User();
 		// si on a rempli le formulaire
 		if(!empty($_POST)){
@@ -43,7 +54,8 @@ class DefaultController
 			$user->setEmail(htmlentities($_POST['email']));
 
 			if($_POST['passwd1'] === $_POST['passwd1']) {
-				$user->setPasswd(htmlentities($_POST['passwd1']));
+				$pass = md5($_POST['passwd1']);
+				$user->setPasswd($pass);
 			}
 
 			if($user->isValid()){
@@ -52,6 +64,8 @@ class DefaultController
 				header("Location: " . BASE_URL); 	
 			}
 		}
+
+
 
 		View::show('register.php', "Register", ["user" => $user]);
 	}
@@ -92,14 +106,15 @@ class DefaultController
 			View::show('details.php', "Details", ['movie' => $movie]);
 		}
 	}
-
 	/**
 	 * Affiche la page d'accueil
 	 */
 	public function home()
 	{
-		
+		$count = $this->movieManager->countAll();
+
 		$movies = [];
+		$page = (empty($_GET['page'])) ? 1 : htmlentities($_GET['page']);
 
 		if(!empty($_POST['date'])){ // si recherche par date
 			$date = htmlentities($_POST['date']);
@@ -112,10 +127,11 @@ class DefaultController
 		}
 
 		else { // si pas de recherche on affiche tout
-			$movies = $this->movieManager->findAll(); 
+			$movies = $this->movieManager->findAll($page); 
 		}
 
-		View::show("home.php", "Home page !", ["movies" => $movies]);
+		View::show("home.php", "Home page !", 
+					["movies" => $movies, 'count' => $count, 'p' => $page]);
 	}
 
 	/**

@@ -3,6 +3,7 @@
 <ul>
 	<li>Add a movie</li>
 	<li>Update a movie</li>
+	<a href="userList"><li>Users accounts</li></a>
 </ul>
 
 <h4>Delete a movie</h4>

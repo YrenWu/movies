@@ -19,6 +19,7 @@
 		"/user/watchlist" => "watchlist",
 		"/details" => "details",
 		"/admin/manage" => "manage",
+		"/admin/userList" => "userList",
 		"/admin/delete" => "delete",
 		"/register" => "register",
 	];

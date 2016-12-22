@@ -68,10 +68,28 @@ class DemoManager
 		return $results;
 	}
 
-	public function findAll() 
+	public function countAll()
 	{
-		$sql = "SELECT imdbId, id, title
-				FROM movies ORDER BY rating DESC";
+		$sql = "SELECT COUNT(*) FROM movies";
+
+		$dbh = Db::getDbh();
+
+		$stmt = $dbh->prepare($sql);
+		$stmt->execute();
+		$count = $stmt->fetchColumn(); // quand on récupère une seule cellule
+
+		return $count;
+
+	}
+
+	public function findAll($page) 
+	{
+		$numPage = 5;
+		$offset = ($page-1) * $numPage; 
+
+		$sql = "SELECT *
+				FROM movies ORDER BY rating DESC 
+				LIMIT $numPage OFFSET $offset";
 
 		$dbh = Db::getDbh();
 
