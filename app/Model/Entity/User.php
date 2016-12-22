@@ -11,6 +11,8 @@ class User
 	private $role;
 	private $token;
 
+	private $watchlist = [];
+
 	private $validationErrors = [];
 
 	/**
@@ -104,4 +106,18 @@ class User
 	    $this->token = $token;
 	}
 
+	public function getWatchlist()
+	{
+	    return $this->watchlist;
+	}
+	 
+	public function addToWatchlist($movie)
+	{
+	    $this->watchlist[] = $movie;
+	}
+
+	public function setWatchList($watchlist)
+	{
+	    $this->watchlist = $watchlist;
+	}
 }

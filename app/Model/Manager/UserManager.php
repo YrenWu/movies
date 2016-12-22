@@ -10,6 +10,20 @@ use PDO;
 
 class  UserManager
 {
+	public function saveWatchlist($user)
+	{
+		$sql = "UPDATE users SET watchlist = :watchlist WHERE id = :id";
+
+		$dbh = Db::getDbh();
+
+		$stmt = $dbh->prepare($sql);
+		$stmt->bindValue(':id', $user->getId());
+
+		$stmt->bindValue(':watchlist', serialize($user->getWatchlist()));
+
+		$stmt->execute();
+	}
+
 	public function login($login)
 	{
 	

@@ -5,25 +5,27 @@
 <h1>Welcome dear administrator !</h1>
 
 <ul>
-	<a href="moviesList"><li>Manage movies</li></a>
-	<a href="userList"><li>Users accounts</li></a>
+	<a href="moviesList">Manage movies</a>
+	<a href="userList">Users accounts</a>
 </ul>
 
 <?php } ?>
 <!--  En fonction de si on cherche la liste des utilisateurs, la modification, 
 l'ajout ou la suppression de film l'affichage sera différent -->
 <?php
-if($data != null){ // si on a des données envoyées
-	foreach ($data as $elem) {
-		if(get_class($elem) == 'Model\Entity\Movie'){
-			echo($elem->getTitle() . "<br>");
-		}
-		else if (get_class($elem) == 'Model\Entity\User'){
-			echo($elem->getName() . "<br>");
-		}
-	} 
-}
-?>
+	if($data != null){ ?> <!--  si on a des données envoyées -->
+		<ul>	
+		<?php foreach ($data as $elem) {
+				if(get_class($elem) == 'Model\Entity\Movie'){ ?>
+					<li><?= $elem->getTitle()?> </li>
+				<?php }
+				else if (get_class($elem) == 'Model\Entity\User'){ ?>
+					<li><?= $elem->getName()?> </li>
+				<?php
+				}
+			} ?>
+		</ul> 
+	<?php } ?>
 
 
 

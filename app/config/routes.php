@@ -29,5 +29,8 @@
 		// movies
 		"/admin/moviesList" => "moviesList",
 
+		// ajout watchlist et vote
+		"/add" => "add",
+		"/vote" => "vote",
 
 	];

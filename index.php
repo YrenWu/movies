@@ -47,3 +47,10 @@
 	// metrre un token si oublié
 	// remember me
 	// set_cookie();
+	// faire pagination pour les fonctions searchbyyear etc
+	// faire en sorte de na pas ajouter le film plusieurs fois a la watchlist
+	// et de pouvoir retirer le film de la watchlist
+
+
+	// John Doe = azertyuiop
+	// Jane Doe = qsdfghjklm

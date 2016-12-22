@@ -20,6 +20,27 @@ class DefaultController
 		$this->movieManager = new MovieManager();
 	}
 
+	// vote et watchlist
+	public function add()
+	{
+		$movieId = strip_tags($_GET['id']);
+		// récuper le user aussi 
+		$user = $_SESSION['user'];
+		$user->addToWatchlist($movieId);
+
+		$userManager = new UserManager();
+		$userManager->saveWatchlist($user);
+
+	}
+
+	public function vote()
+	{
+		// $id = strip_tags($_GET['id']);
+		// // récuper le user aussi 
+		// $userId = $_SESSION['user']->getId();
+
+	}
+
 	/**
 	*	fonctions du panneau d'admin
 	*/
@@ -62,6 +83,7 @@ class DefaultController
 			$user->setEmail($result->getEmail());
 			$user->setPasswd($result->pass);
 			$user->setRole($result->admin);
+			$user->setWatchList($result->getWatchlist());
 
 			// verifie que le pass sorti de la bdd est le même que celui posté
 			if(password_verify($_POST['passwd'], $user->getPasswd())){ 
@@ -76,8 +98,7 @@ class DefaultController
 		// deconnexion 
 		unset($_SESSION['user']);
 		// redirection
-		header("Location: ". BASE_URL);
-		
+		header("Location: ". BASE_URL);	
 	}
 
 	/**

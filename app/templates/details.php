@@ -20,7 +20,7 @@
 	</div>
 
 	<div>
-		<a href="<?= $movie->getTrailerUrl(); ?> ">Trailer<a/>
+		<a href="<?= $movie->getTrailerUrl(); ?> ">Trailer</a>
 		<?= $movie->getDateCreated(); ?> 
 		<?= $movie->getDateModified(); ?> 
 	</div>

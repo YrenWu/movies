@@ -57,7 +57,7 @@ class MovieManager
 	{
 		$sql = "SELECT *
 				FROM movies WHERE year = :year 
-				ORDER BY rating DESC";
+				ORDER BY rating DESC LIMIT 15";
 
 		$dbh = Db::getDbh();
 
@@ -75,7 +75,7 @@ class MovieManager
 				INNER JOIN movies_genres AS mg ON mg.movieId=m.id 
 				INNER JOIN genres AS g ON g.id=mg.genreId 
 				WHERE g.name = :word 
-				ORDER BY rating DESC";
+				ORDER BY rating DESC LIMIT 15";
 
 		$dbh = Db::getDbh();
 

@@ -1,7 +1,10 @@
 <?php
-	if(!empty($_SESSION['user'])) { ?>
+	if(!empty($_SESSION['user'])) { 
+	$user = $_SESSION['user']; ?>
 
-	<h1>Welcome <?= $_SESSION['user']->getName() ?></h1>
+	<h1>Welcome <?= $user->getName() ?></h1>
+	<?= var_dump($user) ?>
+
 
 <?php	}
 ?> <!-- vérifier que l'utilisateur est loggué pour afficher et afficher ses favoris -->
