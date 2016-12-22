@@ -22,9 +22,13 @@
 		"/admin/userList" => "userList",
 		"/admin/delete" => "delete",
 		"/register" => "register",
+
+		//pour pouvoir se connecter et se déconnecter ou qu'on soit
 		"/login" => "login",
 		"/logout" => "logout",
 		"/user/logout" => "logout",
 		"/admin/logout" => "logout",
+		"/user/login" => "login",
+		"/admin/login" => "login",
 
 	];

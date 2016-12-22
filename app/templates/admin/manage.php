@@ -1,6 +1,5 @@
 <?php
-	if(!empty($_SESSION['user']) && $_SESSION['user']->getRole() != 1) {	
-	 	die();
+	if(empty($_SESSION['user']) || $_SESSION['user']->getRole() != 1) {	
 	} else { ?>
 
 <h1>Welcome dear administrator !</h1>
@@ -13,5 +12,6 @@
 </ul>
 
 <?php } ?>
+
 <!-- // Le client veut de son côté pouvoir : 
 // 	- ajouter/modifier/supprimer des films de la base de données. Il a besoin d'une interface web. -->

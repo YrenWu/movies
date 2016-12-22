@@ -13,3 +13,9 @@ if(empty($_SESSION['user'])){ ?>
 <?php } else { ?>
 
 	<a href="logout"> Logout </a><?php } ?>
+<?php
+if(!empty($_SESSION['user'])){
+	if($_SESSION['user']->getRole() == 1) {// si admin on affiche un lien vers le panneau admin
+	?> <a href="admin/manage">Admin</a>   
+	
+ <?php } } ?>
