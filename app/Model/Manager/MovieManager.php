@@ -13,7 +13,27 @@ class MovieManager
 {
 	public function insert(Movie $movie)
 	{
-		//$sql = "INSERT INTO movies () VALUES ()";
+		$sql = "INSERT INTO movies (
+				title, imdbId, year, cast, directors, writers, plot,
+				rating, votes, runtime, trailerUrl, dateCreated, dateModified) 
+				VALUES (:title, :imdbId, :year, :cast, :directors,
+				:writers, :plot, 0, 0, :runtime, :trailerUrl, NOW(), null)";
+
+		$dbh = Db::getDbh();
+
+		$stmt = $dbh->prepare($sql);
+
+		$stmt->bindValue(':title', $movie->getTitle());
+		$stmt->bindValue(':imdbId', $movie->getImdbId());
+		$stmt->bindValue(':year', $movie->getYear());
+		$stmt->bindValue(':cast', $movie->getCast());
+		$stmt->bindValue(':directors', $movie->getDirectors());
+		$stmt->bindValue(':plot', $movie->getPlot());
+		$stmt->bindValue(':writers', $movie->getTitle());
+		/// ...
+
+		$stmt->execute();
+
 	}
 
 	public function update(Movie $movie)

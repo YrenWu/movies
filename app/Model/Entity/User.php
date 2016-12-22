@@ -26,7 +26,7 @@ class User
 			$this->validationErrors[] = "Please enter your name";
 		}
 
-		if(strlen($this->passwd) < 10){
+		if(strlen($this->passwd) < 8){
 			$isValid = false;
 			$this->validationErrors[] = "Your password is too weak";
 		}

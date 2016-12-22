@@ -25,7 +25,7 @@
 			<a href="?page=<?= $p-1 ?>">Previous</a>
 		<?php } ?>
 
-		<?php if($p != $count)  { ?>
+		<?php if($p != $count/5)  { ?>
 			<a href="?page=<?= $p+1 ?>">Following</a>
 		<?php } ?>
 		</div>

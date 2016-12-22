@@ -11,8 +11,8 @@ class  UserManager
 {
 	public function insert($user)
 	{
-		$sql = "INSERT INTO users (name, pass, email, admin) 
-				VALUES (:name, :pass, :email, 0)";
+		$sql = "INSERT INTO users (name, pass, email, admin, token, role) 
+				VALUES (:name, :pass, :email, :token, :role)";
 			
 		$dbh = Db::getDbh();
 
@@ -20,6 +20,9 @@ class  UserManager
 		$stmt->bindValue(':name', $user->getName());
 		$stmt->bindValue(':pass',  $user->getPasswd());
 		$stmt->bindValue(':email', $user->getEmail());
+		$stmt->bindValue(':token', $user->getToken());
+		$stmt->bindValue(':role', $user->getRole());
+		
 		$stmt->execute(); 
 	}
 

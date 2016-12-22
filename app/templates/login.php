@@ -1,3 +1,18 @@
+<?php 
+
+	session_start();
+
+	if(!empty($_POST)){
+		$sql = "SELECT * FROM users 
+				WHERE name = :login 
+				OR email = :login ";
+
+		if(password_verify($_POST['passwd'], $user->getPasswd())){ 
+			$_SESSION['user'] = true; //ou user stocker le $user ; 
+		}
+	}
+?>
+
 <form action="login" method="post" accept-charset="utf-8">
 	Sign in :
 	<input type="text" name="name" value="" placeholder="John Doe">

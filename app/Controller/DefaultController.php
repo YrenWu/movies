@@ -8,6 +8,7 @@ use Model\Entity\User;
 use Model\Manager\MovieManager;
 use Model\Manager\UserManager;
 
+
 class DefaultController 
 {
 
@@ -47,15 +48,25 @@ class DefaultController
 		$user = new User();
 		// si on a rempli le formulaire
 		if(!empty($_POST)){
+
 			$userManager = new UserManager();
+			$errors = [];
 		
 
 			$user->setName(htmlentities($_POST['name']));
 			$user->setEmail(htmlentities($_POST['email']));
 
-			if($_POST['passwd1'] === $_POST['passwd1']) {
-				$pass = md5($_POST['passwd1']);
+			// si les deux passes sont identiques
+			if($_POST['passwd1'] === $_POST['passwd2']) {
+
+				// bcrypt, pas md5
+				$pass = password_hash($_POST['passwd1'], PASSWORD_DEFAULT);
 				$user->setPasswd($pass);
+				$user->setRole(0);
+				$user->setToken("");
+
+			} else {
+				$errors[] = "Les mots de passes sont différents";
 			}
 
 			if($user->isValid()){
@@ -84,9 +95,8 @@ class DefaultController
 
 	public function manage() // fonction qui affiche le panneau d'admin
 	{
-		$movies = $this->movieManager->findAll();
-
-		View::show('admin/manage.php', "Manage your movies", ['movies' => $movies]);
+		
+		View::show('admin/manage.php', "Manage your movies");
 	}
 	/**
 	* affiche un film dans le détail
