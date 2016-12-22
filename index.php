@@ -33,7 +33,7 @@
 
 // L'internaute peut 
 // 	- donner une note à un film
-// 	- créer un compte, se connecter/déconnecter, oublier son mot de passe
+//  oublier son mot de passe
 
 // ### Détails d'un film
 // - Infos à mettre en forme

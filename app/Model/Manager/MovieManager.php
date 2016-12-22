@@ -102,9 +102,9 @@ class MovieManager
 
 	}
 
-	public function findAll($page) 
+	public function findAll($page, $numPage) 
 	{
-		$numPage = 5;
+		
 		$offset = ($page-1) * $numPage; 
 
 		$sql = "SELECT *

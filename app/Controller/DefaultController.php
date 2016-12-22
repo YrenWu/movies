@@ -20,6 +20,29 @@ class DefaultController
 		$this->movieManager = new MovieManager();
 	}
 
+	/**
+	*	fonctions du panneau d'admin
+	*/
+	public function moviesList()
+	{
+		$movies = [];
+		// la findall() va lister les films on augmente le nombre de l'offset
+		// du coup la fonction prend un deuxième param
+		$movies = $this->movieManager->findAll(1, 100);  
+		View::show('admin/manage.php', 'List of movies', ['data' => $movies]);
+	}
+
+	
+	// fonction qui liste tous les utilisateurs pour suppression 
+	// de compte dans le panneau admin (ça rigole pas)
+	public function userList()
+	{
+		$userManager = new UserManager();
+		$users = $userManager->findAll();
+
+		View::show('admin/manage.php', 'List of users', ['data' => $users]);
+	}
+
 	/** fonction pour se logguer
 	* 
 	*/
@@ -57,15 +80,6 @@ class DefaultController
 		
 	}
 
-	// fonction qui liste tous les utilisateurs pour suppression 
-	// de compte dans le panneau admin (ça rigole pas)
-	public function userList()
-	{
-		$userManager = new UserManager();
-		$users = $userManager->findAll();
-
-		View::show('admin/userList.php', 'List of users', ['users' => $users]);
-	}
 	/**
 	* Inscription sur le site
 	*/
@@ -123,7 +137,7 @@ class DefaultController
 	public function manage() // fonction qui affiche le panneau d'admin
 	{
 		
-		View::show('admin/manage.php', "Manage your movies");
+		View::show('admin/manage.php', "Manage your movies", ['data' => null]);
 	}
 	/**
 	* affiche un film dans le détail
@@ -162,7 +176,7 @@ class DefaultController
 		}
 
 		else { // si pas de recherche on affiche tout
-			$movies = $this->movieManager->findAll($page); 
+			$movies = $this->movieManager->findAll($page, 5); 
 		}
 
 		View::show("home.php", "Home page !", 

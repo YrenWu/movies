@@ -7,20 +7,11 @@
 	//si l'URL correspond, la méthode de contrôleur (la valeur, à droite), sera appelée par le Dispatcher
 
 	//les routes peuvent ressemble à ce que vous voulez, mais commencent toutes par / : 
-	/*
-		"/articles/" 		=> "showPost",
-		"/articles/detail/" => "showPostDetail",
-		"/admin/"			=> "adminHome",
-		"/admin/users/add/" => "addUser",
-	*/
 
 	$routes = [
 		"/" => "home",
 		"/user/watchlist" => "watchlist",
 		"/details" => "details",
-		"/admin/manage" => "manage",
-		"/admin/userList" => "userList",
-		"/admin/delete" => "delete",
 		"/register" => "register",
 
 		//pour pouvoir se connecter et se déconnecter ou qu'on soit
@@ -30,5 +21,13 @@
 		"/admin/logout" => "logout",
 		"/user/login" => "login",
 		"/admin/login" => "login",
+
+		// panneau d'admin
+		"/admin/" => "manage",
+		"/admin/manage" => "manage",
+		"/admin/userList" => "userList",
+		// movies
+		"/admin/moviesList" => "moviesList",
+
 
 	];
