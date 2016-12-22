@@ -22,4 +22,7 @@
 		"/admin/userList" => "userList",
 		"/admin/delete" => "delete",
 		"/register" => "register",
+		"/login" => "login",
+		"/logout" => "logout",
+		
 	];

@@ -25,11 +25,28 @@ class DefaultController
 	*/
 	public function login()
 	{
-		// vérifier que le pass entré hashé correspond à celui de la 
-		// bdd (john doe = plopplopplop et jane doe = azertyuiop pour tests)
-		//traitement du formulaire de login
-		//appelle le usermanager pour les request
-		//affichage du form
+
+		if(!empty($_POST)){
+
+			$userManager = new UserManager();
+			$user = new User();
+
+			$login = strip_tags($_POST['login']);
+			//user sorti de la bdd 
+			$result = $userManager->login($login);
+			$user->setName($result->getName());
+			$user->setId($result->getId());
+			$user->setEmail($result->getEmail());
+			$user->setPasswd($result->pass);
+			$user->setRole($result->admin);
+
+			// verifie que le pass sorti de la bdd est le même que celui posté
+			if(password_verify($_POST['passwd'], $user->getPasswd())){ 
+				$_SESSION['user'] = $user; //ou user stocker le $user ; 
+				header("Location: ". BASE_URL);
+			}
+		}
+
 
 	}
 

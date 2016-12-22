@@ -3,12 +3,51 @@
 namespace Model\Manager;
 
 use Model\Db;
+use Model\Entity\User;
 
 use PDO;
 
 
 class  UserManager
 {
+	public function login($login)
+	{
+	
+		$sql = "SELECT * FROM users 
+				WHERE name = :login 
+				OR email = :login ";
+
+		$dbh = Db::getDbh();
+
+		$stmt = $dbh->prepare($sql);
+		$stmt->bindValue(':login', $login);
+
+
+		$stmt->execute();
+		$result = $stmt->fetchObject('\Model\Entity\User');
+
+		return $result;
+
+	}
+
+	public function update($user)
+	{
+
+	}
+
+	public function findOne($id)
+	{
+		$sql = 'SELECT * FROM users WHERE id = :id';
+
+		$dbh = Db::getDbh();
+
+		$stmt = $dbh->prepare($sql);
+		$stmt->bindValue(':id', $id);
+
+		$user = $stmt->execute();
+		return $user;
+	}
+
 	public function insert($user)
 	{
 		$sql = "INSERT INTO users (name, pass, email, token, admin) 
@@ -35,16 +74,6 @@ class  UserManager
 		$stmt = $dbh->prepare($sql);
 		$stmt->bindValue(':id', $id);
 		$stmt->execute();
-	}
-
-	public function update($user)
-	{
-
-	}
-
-	public function findOne()
-	{
-
 	}
 
 	public function findAll()
