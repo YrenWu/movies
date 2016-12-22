@@ -36,6 +36,6 @@
 // - Un bouton permet d'ajouter/supprimer de sa watchlist (connectés seulement)
 // - Un formulaire permet de partager par email le film (connectés seulement)
 
-	// fonction isvalid etpour le crud de demo (movies) et user
+	// fonction isvalid etpour le crud de Movie (movies) et user
 	// class user et usermanager
 	// faire messages de validation après redirection

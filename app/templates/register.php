@@ -3,21 +3,21 @@
 		foreach($user->getValidationErrors() as $error){
 		echo "<p>" . ($error) . "</p>" ; 
 	} ?>
-	<label>
+	<label class="reg">
 		Nom :
-		<input type="text" name="name" value="<?= $user->getName(); ?>" placeholder="John Doe">
+		<input class="register" type="text" name="name" value="<?= $user->getName(); ?>" placeholder="John Doe">
 	</label>
 
-	<label>
+	<label class="reg">
 		Password :
 
-		<input type="password" name="passwd1" >
-		<input type="password" name="passwd2" >
+		<input class="register" type="password" name="passwd1" >
+		<input class="register" type="password" name="passwd2" >
 	</label>
 
-	<label>
+	<label class="reg">
 		E-mail :
-		<input type="text" name="email" value="<?= $user->getEmail(); ?>">
+		<input class="register" type="text" name="email" value="<?= $user->getEmail(); ?>">
 	</label>
-	<input type="submit"  value="Register">
+	<input class="register" type="submit"  value="Register">
 </form>

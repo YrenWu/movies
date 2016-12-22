@@ -9,14 +9,14 @@ use PDO;
 /**
  * Contient toutes les méthodes faisant des requêtes à la base de données
  */
-class DemoManager
+class MovieManager
 {
-	public function insert(Demo $movie)
+	public function insert(Movie $movie)
 	{
 		//$sql = "INSERT INTO movies () VALUES ()";
 	}
 
-	public function update(Demo $movie)
+	public function update(Movie $movie)
 	{
 
 	}
@@ -45,7 +45,7 @@ class DemoManager
 		$stmt->bindValue(":year", $date);
 		$stmt->execute();
 
-		$results = $stmt->fetchAll(\PDO::FETCH_CLASS, '\Model\Entity\Demo');
+		$results = $stmt->fetchAll(\PDO::FETCH_CLASS, '\Model\Entity\Movie');
 		return $results;
 	}
 
@@ -63,7 +63,7 @@ class DemoManager
 		$stmt->bindValue(":word", $word);
 		$stmt->execute();
 
-		$results = $stmt->fetchAll(\PDO::FETCH_CLASS, '\Model\Entity\Demo');
+		$results = $stmt->fetchAll(\PDO::FETCH_CLASS, '\Model\Entity\Movie');
 
 		return $results;
 	}
@@ -96,7 +96,7 @@ class DemoManager
 		$stmt = $dbh->prepare($sql);
 		$stmt->execute();
 
-		$results = $stmt->fetchAll(\PDO::FETCH_CLASS, '\Model\Entity\Demo');
+		$results = $stmt->fetchAll(\PDO::FETCH_CLASS, '\Model\Entity\Movie');
 
 		return $results;
 	}	
@@ -113,7 +113,7 @@ class DemoManager
 		$stmt->bindValue(":id", $id);
 		$stmt->execute();
 
-		$result = $stmt->fetchObject('\Model\Entity\Demo');
+		$result = $stmt->fetchObject('\Model\Entity\Movie');
 
 		return $result;
 	}

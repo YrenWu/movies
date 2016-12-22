@@ -3,9 +3,9 @@
 namespace Controller;
 
 use View\View; //on peut donc utiliser cette classe comme View au lieu de \View\View
-use Model\Entity\Demo;
+use Model\Entity\Movie;
 use Model\Entity\User;
-use Model\Manager\DemoManager;
+use Model\Manager\MovieManager;
 use Model\Manager\UserManager;
 
 class DefaultController 
@@ -16,7 +16,7 @@ class DefaultController
 
 	public function __construct()
 	{
-		$this->movieManager = new DemoManager();
+		$this->movieManager = new MovieManager();
 	}
 
 	/** fonction pour se logguer
@@ -64,8 +64,6 @@ class DefaultController
 				header("Location: " . BASE_URL); 	
 			}
 		}
-
-
 
 		View::show('register.php', "Register", ["user" => $user]);
 	}

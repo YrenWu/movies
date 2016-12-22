@@ -2,7 +2,7 @@
 
 namespace Model\Entity;
 
-class Demo
+class Movie
 {
 	private $id; 					//clef primaire
 
