@@ -1,6 +1,8 @@
 <?php
 	//ceci est le contrôleur frontal
 	//il doit être short & sweet
+	session_start();
+
 
 	//charge nos définitions de routes
 	require("app/config/routes.php");

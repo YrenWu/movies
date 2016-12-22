@@ -25,9 +25,18 @@ class DefaultController
 	*/
 	public function login()
 	{
-		// vérifier que le pass entré hashé en md5 correspond à celui de la 
+		// vérifier que le pass entré hashé correspond à celui de la 
 		// bdd (john doe = plopplopplop et jane doe = azertyuiop pour tests)
+		//traitement du formulaire de login
+		//appelle le usermanager pour les request
+		//affichage du form
 
+	}
+
+	public function logout()
+	{
+		// deconnexion 
+		// redirection
 	}
 
 	// fonction qui liste tous les utilisateurs pour suppression 
@@ -53,8 +62,8 @@ class DefaultController
 			$errors = [];
 		
 
-			$user->setName(htmlentities($_POST['name']));
-			$user->setEmail(htmlentities($_POST['email']));
+			$user->setName(strip_tags($_POST['name']));
+			$user->setEmail(strip_tags($_POST['email']));
 
 			// si les deux passes sont identiques
 			if($_POST['passwd1'] === $_POST['passwd2']) {
@@ -85,7 +94,7 @@ class DefaultController
 	public function delete()
 	{
 		if(!empty($_GET)) {
-			$id = htmlentities($_GET['id']);
+			$id = strip_tags($_GET['id']);
 			$this->movieManager->delete($id);
 		}
 		//redirige vers la page
@@ -103,7 +112,7 @@ class DefaultController
 	*/
 	public function details()
 	{
-		$id = htmlentities($_GET["id"]);
+		$id = strip_tags($_GET["id"]);
 
 		$movie = $this->movieManager->findOne($id);
 			
@@ -122,15 +131,15 @@ class DefaultController
 		$count = $this->movieManager->countAll();
 
 		$movies = [];
-		$page = (empty($_GET['page'])) ? 1 : htmlentities($_GET['page']);
+		$page = (empty($_GET['page'])) ? 1 : strip_tags($_GET['page']);
 
 		if(!empty($_POST['date'])){ // si recherche par date
-			$date = htmlentities($_POST['date']);
+			$date = strip_tags($_POST['date']);
 			$movies = $this->movieManager->findByDate($date);
 		} 
 
 		else if(!empty($_POST['keyword'])){ // si recherche par genre
-			$keyword = htmlentities($_POST['keyword']);
+			$keyword = strip_tags($_POST['keyword']);
 			$movies = $this->movieManager->findByKeyword($keyword);
 		}
 
@@ -160,4 +169,3 @@ class DefaultController
 		View::show("user/watchlist.php", "WatchList?");
 	}
 }
-

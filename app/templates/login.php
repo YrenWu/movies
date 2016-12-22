@@ -1,6 +1,6 @@
 <?php 
 
-	session_start();
+	//session_start();
 
 	if(!empty($_POST)){
 		$sql = "SELECT * FROM users 
@@ -8,7 +8,7 @@
 				OR email = :login ";
 
 		if(password_verify($_POST['passwd'], $user->getPasswd())){ 
-			$_SESSION['user'] = true; //ou user stocker le $user ; 
+			$_SESSION['user'] = $user; //ou user stocker le $user ; 
 		}
 	}
 ?>
