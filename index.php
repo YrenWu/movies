@@ -1,4 +1,7 @@
 <?php
+	require("app/Model/Entity/User.php"); // nécessaire pour les sessions
+
+
 	//ceci est le contrôleur frontal
 	//il doit être short & sweet
 	session_start();
@@ -41,9 +44,6 @@
 	// fonction isvalid etpour le crud de Movie (movies) et user
 	// class user et usermanager
 	// faire messages de validation après redirection
-	// faire le script de login 
 	// metrre un token si oublié
-	// logout unset($_SESSION['user'])
-	// header("Location: ")
 	// remember me
 	// set_cookie();

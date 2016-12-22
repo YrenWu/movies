@@ -24,5 +24,7 @@
 		"/register" => "register",
 		"/login" => "login",
 		"/logout" => "logout",
-		
+		"/user/logout" => "logout",
+		"/admin/logout" => "logout",
+
 	];

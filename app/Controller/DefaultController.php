@@ -54,6 +54,7 @@ class DefaultController
 		unset($_SESSION['user']);
 		// redirection
 		header("Location: ". BASE_URL);
+		
 	}
 
 	// fonction qui liste tous les utilisateurs pour suppression 
