@@ -30,8 +30,7 @@ class MovieManager
 		$stmt->bindValue(':directors', $movie->getDirectors());
 		$stmt->bindValue(':plot', $movie->getPlot());
 		$stmt->bindValue(':writers', $movie->getTitle());
-		/// ...
-
+		
 		$stmt->execute();
 
 	}

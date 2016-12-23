@@ -54,5 +54,3 @@
 
 	// John Doe = azertyuiop
 	// Jane Doe = qsdfghjklm
-
-	// la watchlist est bugguée à cause de la sérialization désérialisation , à corriger

@@ -148,8 +148,20 @@ class DefaultController
 	public function delete()
 	{
 		if(!empty($_GET)) {
+
 			$id = strip_tags($_GET['id']);
-			$this->movieManager->delete($id);
+			$obj = strip_tags($_GET['obj']);
+
+			// si on supprime un film
+			if($obj == 'movie'){
+				$this->movieManager->delete($id);
+			}
+			// si on supprime un user
+			if($obj == 'user'){
+				$userManager = new UserManager();
+				$userManager->delete($id);
+			}
+
 		}
 		//redirige vers la page
 		header("Location: " . BASE_URL . "admin/manage"); 
@@ -221,7 +233,7 @@ class DefaultController
 	public function watchlist()
 	{
 		if(!empty($_SESSION)){
-			
+
 			$user = $_SESSION['user'];
 
 			$userManager = new UserManager();

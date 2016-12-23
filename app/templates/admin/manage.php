@@ -17,10 +17,14 @@ l'ajout ou la suppression de film l'affichage sera différent -->
 		<ul>	
 		<?php foreach ($data as $elem) {
 				if(get_class($elem) == 'Model\Entity\Movie'){ ?>
-					<li><?= $elem->getTitle()?> </li>
+					<li><?= $elem->getTitle() . ' ' ?>
+						<a href="delete?id=<?= $elem->getId()?>&obj=movie"> Delete </a>
+					</li>
 				<?php }
 				else if (get_class($elem) == 'Model\Entity\User'){ ?>
-					<li><?= $elem->getName()?> </li>
+					<li><?= $elem->getName() . ' ' ?> 
+						<a href="delete?id=<?= $elem->getId() ?>&obj=user"> Delete </a>
+					</li>
 				<?php
 				}
 			} ?>

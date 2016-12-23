@@ -33,4 +33,7 @@
 		"/add" => "add",
 		"/vote" => "vote",
 
+		//admin delete
+		"/admin/delete" => "delete",
+
 	];

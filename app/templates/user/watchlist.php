@@ -15,6 +15,7 @@
 
 			foreach ($watch[0] as $movieId) {
 				if($movieId != ''){
+
 					$movie = $movieManager->findOne($movieId);
 					echo($movie->getTitle());
 					echo '<img class="thumbnail" src="'. PICS_DIR . $movie->getImdbId() . '.jpg">';
@@ -25,5 +26,5 @@
 <!--
 	}
 
- // 	- ajouter/retirer des films à sa liste personnelle de films à voir (watchlist)
+ // - ajouter/retirer des films à sa liste personnelle de films à voir (watchlist)
 // 	- partager une fiche de film, ou sa watchlist -->
