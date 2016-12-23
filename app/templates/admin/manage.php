@@ -2,14 +2,9 @@
 	if(empty($_SESSION['user']) || $_SESSION['user']->getRole() != 1) {	
 	} else { ?>
 
-<h1>Welcome dear administrator !</h1>
+<?php include('manageMenu.php');
 
-<ul>
-	<a href="moviesList">Manage movies</a>
-	<a href="userList">Users accounts</a>
-</ul>
-
-<?php } ?>
+ } ?>
 <!--  En fonction de si on cherche la liste des utilisateurs, la modification, 
 l'ajout ou la suppression de film l'affichage sera différent -->
 <?php

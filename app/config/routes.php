@@ -28,6 +28,7 @@
 		"/admin/userList" => "userList",
 		// movies
 		"/admin/moviesList" => "moviesList",
+		"/admin/moviesCreate" => "moviesCreate",
 
 		// ajout watchlist et vote
 		"/add" => "add",

@@ -21,7 +21,9 @@ class DefaultController
 		$this->userManager = new UserManager();
 	}
 
-	// vote et watchlist
+	/**
+	*	Watchlist functions
+	*/
 	public function add()
 	{
 		$movieId = strip_tags($_GET['id']);
@@ -34,7 +36,7 @@ class DefaultController
 
 	}
 
-	public function remove()
+	public function remove() // remove from watchlist
 	{
 		$movieId = strip_tags($_GET['id']);
 		// récuper le user aussi 
@@ -57,6 +59,32 @@ class DefaultController
 	/**
 	*	fonctions du panneau d'admin
 	*/
+	public function delete()
+	{
+		if(!empty($_GET)) {
+
+			$id = strip_tags($_GET['id']);
+			$obj = strip_tags($_GET['obj']);
+
+			// si on supprime un film
+			if($obj == 'movie'){
+				$this->movieManager->delete($id);
+			}
+			// si on supprime un user
+			if($obj == 'user'){
+				$this->userManager->delete($id);
+			}
+
+		}
+		//redirige vers la page
+		header("Location: " . BASE_URL . "admin/manage"); 
+	}
+
+	public function manage() // fonction qui affiche le panneau d'admin
+	{
+		View::show('admin/manage.php', "Manage your movies", ['data' => null]);
+	}
+
 	public function moviesList()
 	{
 		$movies = [];
@@ -66,7 +94,12 @@ class DefaultController
 		View::show('admin/manage.php', 'List of movies', ['data' => $movies]);
 	}
 
-	
+	public function moviesCreate()
+	{
+		$movie = new Movie();
+		View::show('admin/moviesCreate.php', "Manage your movies", ['movie' => $movie]);
+	}
+
 	// fonction qui liste tous les utilisateurs pour suppression 
 	// de compte dans le panneau admin (ça rigole pas)
 	public function userList()
@@ -150,36 +183,6 @@ class DefaultController
 		View::show('register.php', "Register", ["user" => $user]);
 	}
 
-	/**
-	* 	fonctions CRUD pour l'admin
-	*/
-	public function delete()
-	{
-		if(!empty($_GET)) {
-
-			$id = strip_tags($_GET['id']);
-			$obj = strip_tags($_GET['obj']);
-
-			// si on supprime un film
-			if($obj == 'movie'){
-				$this->movieManager->delete($id);
-			}
-			// si on supprime un user
-			if($obj == 'user'){
-				$this->userManager->delete($id);
-			}
-
-		}
-		//redirige vers la page
-		header("Location: " . BASE_URL . "admin/manage"); 
-	}
-
-
-	public function manage() // fonction qui affiche le panneau d'admin
-	{
-		
-		View::show('admin/manage.php', "Manage your movies", ['data' => null]);
-	}
 	/**
 	* affiche un film dans le détail
 	*/
