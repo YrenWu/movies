@@ -18,8 +18,9 @@ class  UserManager
 
 		$stmt = $dbh->prepare($sql);
 		$stmt->bindValue(':id', $user->getId());
+		$watchlist = $user->getWatchlist();
 
-		$stmt->bindValue(':watchlist', serialize($user->getWatchlist()));
+		$stmt->bindValue(':watchlist', $watchlist);
 
 		$stmt->execute();
 	}

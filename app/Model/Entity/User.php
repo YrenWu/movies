@@ -113,7 +113,7 @@ class User
 	 
 	public function addToWatchlist($movie)
 	{
-	    $this->watchlist[] = $movie;
+	    $this->watchlist .= $movie . '-';
 	}
 
 	public function setWatchList($watchlist)

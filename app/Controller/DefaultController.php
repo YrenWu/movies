@@ -30,6 +30,7 @@ class DefaultController
 
 		$userManager = new UserManager();
 		$userManager->saveWatchlist($user);
+		header("Location: " . BASE_URL); 	
 
 	}
 
@@ -219,6 +220,14 @@ class DefaultController
 	 */
 	public function watchlist()
 	{
+		if(!empty($_SESSION)){
+			
+			$user = $_SESSION['user'];
+
+			$userManager = new UserManager();
+			$userManager->saveWatchlist($user);
+		}
+
 		View::show("user/watchlist.php", "WatchList?");
 	}
 }
