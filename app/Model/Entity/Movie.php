@@ -182,5 +182,4 @@ class Movie
 	{
 	    $this->writers = $writers;
 	}
-
 }

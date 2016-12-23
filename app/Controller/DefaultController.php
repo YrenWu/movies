@@ -59,6 +59,24 @@ class DefaultController
 	/**
 	*	fonctions du panneau d'admin
 	*/
+
+	public function update()
+	{
+		$movie = new Movie();
+		//récupération du film
+		$id = htmlentities($_GET['id']);
+		$movie =$this->movieManager->findOne($id);
+
+		View::show('admin/moviesForm.php', "Manage your movies", ['movie' => $movie, 'action' => "update"]);
+	}
+
+	public function create()
+	{
+		$movie = new Movie();
+		//récupération du film
+		View::show('admin/moviesForm.php', "Manage your movies", ['movie' => $movie, 'action' => 'create']);
+	}
+
 	public function delete()
 	{
 		if(!empty($_GET)) {
@@ -94,7 +112,8 @@ class DefaultController
 		View::show('admin/manage.php', 'List of movies', ['data' => $movies]);
 	}
 
-	public function moviesCreate()
+	// en mode update ou create
+	public function moviesForm()
 	{
 		$movie = new Movie();
 
@@ -111,13 +130,22 @@ class DefaultController
 			$movie->setDirectors(strip_tags($_POST['directors']));
 
 			if($movie->isValid()){
-				$this->movieManager->insert($movie);
+				// si l'action est create
+				if($_POST['action'] == 'create'){
+					$this->movieManager->insert($movie);
+				}
+				// si l'action est update (marche pas)
+				if($_POST['action'] == 'update'){
+					$this->movieManager->update($movie);
+				}
 				header("Location: " . BASE_URL . "admin/manage"); 
+
+				
 			}
 
 		}
 
-		View::show('admin/moviesCreate.php', "Manage your movies", ['movie' => $movie]);
+		View::show('admin/moviesForm.php', "Manage your movies", ['movie' => $movie]);
 	}
 
 	// fonction qui liste tous les utilisateurs pour suppression 

@@ -1,11 +1,9 @@
 <?php
 	require("app/Model/Entity/User.php"); // nécessaire pour les sessions
 
-
 	//ceci est le contrôleur frontal
 	//il doit être short & sweet
 	session_start();
-
 
 	//charge nos définitions de routes
 	require("app/config/routes.php");
@@ -40,5 +38,8 @@
 // - Un widget permettant de donner une note sur 10 (ie. style étoiles) (connectés seulement)
 // - Un formulaire permet de partager par email le film (connectés seulement)
 
-	// John Doe = azertyuiop
-	// Jane Doe = qsdfghjklm
+// update pour le film 
+// etoffer vérifications pour le film
+
+// John Doe = azertyuiop
+// Jane Doe = qsdfghjklm

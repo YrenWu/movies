@@ -28,7 +28,10 @@
 		"/admin/userList" => "userList",
 		// movies
 		"/admin/moviesList" => "moviesList",
-		"/admin/moviesCreate" => "moviesCreate",
+		"/admin/moviesForm" => "moviesForm",
+		"/admin/create" => "create",
+		"/admin/update" => "update",
+
 
 		// ajout watchlist et vote
 		"/add" => "add",

@@ -27,8 +27,4 @@
 			}
 		 }
 	?> 
-<!--
-	}
-
- // - ajouter/retirer des films à sa liste personnelle de films à voir (watchlist)
-// 	- partager une fiche de film, ou sa watchlist -->
+<!--	- partager une fiche de film, ou sa watchlist -->

@@ -5,8 +5,8 @@
 	var_dump($movie);
 
 } ?>
-
-<form action="moviesCreate" method="post" accept-charset="utf-8">
+<!-- transmettre l'action au formulaire (moviesForm dans le défalut controller et modifier ou créer en fonction) -->
+<form action="moviesForm" method="post" accept-charset="utf-8"> 
 
 	<fieldset>
 	
@@ -56,5 +56,6 @@
 			<input class="register" type="text" name="trailerUrl"  value="<?= $movie->getTrailerUrl(); ?>">
 		</label>
 	</fieldset>
-	<input class="register" type="submit"  value="Create">
+	<input type="hidden" name="action" value="<?= $action?>"/>
+	<input class="register" type="submit"  value="Submit">
 </form>
