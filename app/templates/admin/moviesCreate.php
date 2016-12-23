@@ -2,6 +2,7 @@
 
 	foreach($movie->getValidationErrors() as $error){
 	echo "<p>" . ($error) . "</p>" ; 
+	var_dump($movie);
 
 } ?>
 
@@ -35,8 +36,8 @@
 			<input class="register" type="text" name="writers" value="<?= $movie->getWriters(); ?>" placeholder="">
 		</label>
 		<label class="reg">
-			Plot :
-			<input class="register" type="text" name="plot" value="<?= $movie->getPlot(); ?>" placeholder="">
+			Plot : <br>
+			<textarea name="plot"><?= $movie->getPlot(); ?></textarea>
 		</label>
 		<label class="reg">
 			Casting : <br>

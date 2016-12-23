@@ -3,6 +3,7 @@
 namespace Model\Manager;
 
 use Model\Db;
+use Model\Entity\Movie;
 
 use PDO;
 
@@ -14,27 +15,32 @@ class MovieManager
 	public function insert(Movie $movie)
 	{
 		$sql = "INSERT INTO movies (
-				title, imdbId, year, cast, directors, writers, plot,
-				rating, votes, runtime, trailerUrl, dateCreated, dateModified) 
-				VALUES (:title, :imdbId, :year, :cast, :directors,
-				:writers, :plot, 0, 0, :runtime, :trailerUrl, NOW(), null)";
+					title, imdbId, year, cast, directors, 
+					writers, plot, rating, votes, runtime, 
+					trailerUrl, dateCreated, dateModified) 
+				VALUES (
+					:title, :imdbId, :year, :cast, :directors,
+					:writers, :plot, 0, 0, :runtime, 
+					:trailerUrl, NOW(), NOW())";
 
 		$dbh = Db::getDbh();
 
 		$stmt = $dbh->prepare($sql);
+		$year = (int) $movie->getYear();
 
 		$stmt->bindValue(':title', $movie->getTitle());
 		$stmt->bindValue(':imdbId', $movie->getImdbId());
-		$stmt->bindValue(':year', $movie->getYear());
+		$stmt->bindValue(':year', $year);
 		$stmt->bindValue(':cast', $movie->getCast());
 		$stmt->bindValue(':directors', $movie->getDirectors());
 		$stmt->bindValue(':plot', $movie->getPlot());
-		$stmt->bindValue(':writers', $movie->getTitle());
+		$stmt->bindValue(':writers', $movie->getWriters());
+		$stmt->bindValue(':runtime', $movie->getRuntime());
+		$stmt->bindValue(':trailerUrl', $movie->getTrailerUrl());
 		
 		$stmt->execute();
 
 	}
-
 	public function update(Movie $movie)
 	{
 

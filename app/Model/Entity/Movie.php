@@ -31,7 +31,7 @@ class Movie
 		$isValid = true;
 
 		//valider les données de l'instance ici 
-		if(strlen($this->plot < 10)){
+		if(strlen($this->plot) < 10){
 			$isValid = false;
 			$this->validationErrors[] = "Please enter a longer plot";
 		}

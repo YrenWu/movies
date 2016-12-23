@@ -97,6 +97,26 @@ class DefaultController
 	public function moviesCreate()
 	{
 		$movie = new Movie();
+
+		if(!empty($_POST)){
+		
+			$movie->setTitle(strip_tags($_POST['title']));
+			$movie->setRuntime(strip_tags($_POST['runtime']));
+			$movie->setYear(strip_tags($_POST['year']));
+			$movie->setWriters(strip_tags($_POST['writers']));
+			$movie->setImdbId(strip_tags($_POST['imdbId']));
+			$movie->setTrailerUrl(strip_tags($_POST['trailerUrl']));
+			$movie->setPlot(strip_tags($_POST['plot']));
+			$movie->setCast(strip_tags($_POST['cast']));
+			$movie->setDirectors(strip_tags($_POST['directors']));
+
+			if($movie->isValid()){
+				$this->movieManager->insert($movie);
+				header("Location: " . BASE_URL . "admin/manage"); 
+			}
+
+		}
+
 		View::show('admin/moviesCreate.php', "Manage your movies", ['movie' => $movie]);
 	}
 
