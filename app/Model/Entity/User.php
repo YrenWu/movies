@@ -42,6 +42,15 @@ class User
 		return $isValid;
 	}
 
+	public function addToWatchlist($movie)
+	{
+	    $this->watchlist .= $movie . '-';
+	}
+
+	public function removeFromWatchlist($movieId)
+	{
+		$this->watchlist =str_replace($movieId, '', $this->watchlist);
+	}
 	/**
 	 * getter pour les erreurs de validation
 	 */
@@ -109,11 +118,6 @@ class User
 	public function getWatchlist()
 	{
 	    return $this->watchlist;
-	}
-	 
-	public function addToWatchlist($movie)
-	{
-	    $this->watchlist .= $movie . '-';
 	}
 
 	public function setWatchList($watchlist)

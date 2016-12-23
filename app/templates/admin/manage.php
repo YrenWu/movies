@@ -18,12 +18,12 @@ l'ajout ou la suppression de film l'affichage sera différent -->
 		<?php foreach ($data as $elem) {
 				if(get_class($elem) == 'Model\Entity\Movie'){ ?>
 					<li><?= $elem->getTitle() . ' ' ?>
-						<a href="delete?id=<?= $elem->getId()?>&obj=movie"> Delete </a>
+						<a href="delete?id=<?= $elem->getId()?>&obj=movie"> X </a>
 					</li>
 				<?php }
 				else if (get_class($elem) == 'Model\Entity\User'){ ?>
 					<li><?= $elem->getName() . ' ' ?> 
-						<a href="delete?id=<?= $elem->getId() ?>&obj=user"> Delete </a>
+						<a href="delete?id=<?= $elem->getId() ?>&obj=user"> X </a>
 					</li>
 				<?php
 				}
@@ -34,4 +34,4 @@ l'ajout ou la suppression de film l'affichage sera différent -->
 
 
 <!-- // Le client veut de son côté pouvoir : 
-// 	- ajouter/modifier/supprimer des films de la base de données. Il a besoin d'une interface web. -->
+// 	- ajouter/modifier des films de la base de données. Il a besoin d'une interface web. -->

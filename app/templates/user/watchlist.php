@@ -16,12 +16,16 @@
 			foreach ($watch[0] as $movieId) {
 				if($movieId != ''){
 
-					$movie = $movieManager->findOne($movieId);
-					echo($movie->getTitle());
-					echo '<img class="thumbnail" src="'. PICS_DIR . $movie->getImdbId() . '.jpg">';
+					$movie = $movieManager->findOne($movieId); ?>
+
+					<?= $movie->getTitle() ?>
+					<a href="remove?id=<?= $movie->getId() ?>">X</a>
+					<img class="thumbnail" src="<?= PICS_DIR . $movie->getImdbId() ?>.jpg">
+					
+				<?php
 				}
-			}?>
-		<?php }
+			}
+		 }
 	?> 
 <!--
 	}

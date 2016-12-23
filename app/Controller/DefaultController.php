@@ -18,6 +18,7 @@ class DefaultController
 	public function __construct()
 	{
 		$this->movieManager = new MovieManager();
+		$this->userManager = new UserManager();
 	}
 
 	// vote et watchlist
@@ -28,8 +29,19 @@ class DefaultController
 		$user = $_SESSION['user'];
 		$user->addToWatchlist($movieId);
 
-		$userManager = new UserManager();
-		$userManager->saveWatchlist($user);
+		$this->userManager->saveWatchlist($user);
+		header("Location: " . BASE_URL); 	
+
+	}
+
+	public function remove()
+	{
+		$movieId = strip_tags($_GET['id']);
+		// récuper le user aussi 
+		$user = $_SESSION['user'];
+		$user->removeFromWatchlist($movieId);
+
+		$this->userManager->saveWatchlist($user);
 		header("Location: " . BASE_URL); 	
 
 	}
@@ -59,9 +71,7 @@ class DefaultController
 	// de compte dans le panneau admin (ça rigole pas)
 	public function userList()
 	{
-		$userManager = new UserManager();
-		$users = $userManager->findAll();
-
+		$users = $this->userManager->findAll();
 		View::show('admin/manage.php', 'List of users', ['data' => $users]);
 	}
 
@@ -73,12 +83,11 @@ class DefaultController
 
 		if(!empty($_POST)){
 
-			$userManager = new UserManager();
 			$user = new User();
 
 			$login = strip_tags($_POST['login']);
 			//user sorti de la bdd 
-			$result = $userManager->login($login);
+			$result = $this->userManager->login($login);
 			$user->setName($result->getName());
 			$user->setId($result->getId());
 			$user->setEmail($result->getEmail());
@@ -112,7 +121,6 @@ class DefaultController
 		// si on a rempli le formulaire
 		if(!empty($_POST)){
 
-			$userManager = new UserManager();
 			$errors = [];
 		
 
@@ -133,7 +141,7 @@ class DefaultController
 			}
 
 			if($user->isValid()){
-				$userManager->insert($user); 
+				$this->userManager->insert($user); 
 				// si tout est ok on insère dans la db
 				header("Location: " . BASE_URL); 	
 			}
@@ -158,8 +166,7 @@ class DefaultController
 			}
 			// si on supprime un user
 			if($obj == 'user'){
-				$userManager = new UserManager();
-				$userManager->delete($id);
+				$this->userManager->delete($id);
 			}
 
 		}
@@ -235,9 +242,7 @@ class DefaultController
 		if(!empty($_SESSION)){
 
 			$user = $_SESSION['user'];
-
-			$userManager = new UserManager();
-			$userManager->saveWatchlist($user);
+			$this->userManager->saveWatchlist($user);
 		}
 
 		View::show("user/watchlist.php", "WatchList?");

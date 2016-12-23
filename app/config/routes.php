@@ -32,6 +32,7 @@
 		// ajout watchlist et vote
 		"/add" => "add",
 		"/vote" => "vote",
+		"/user/remove" => "remove",
 
 		//admin delete
 		"/admin/delete" => "delete",
