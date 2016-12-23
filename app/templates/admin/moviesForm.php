@@ -56,6 +56,7 @@
 			<input class="register" type="text" name="trailerUrl"  value="<?= $movie->getTrailerUrl(); ?>">
 		</label>
 	</fieldset>
-	<input type="hidden" name="action" value="<?= $action?>"/>
+	<input type="hidden" name="action" value="<?= $action ?>"/>
+	<input type="hidden" name="id" value="<?= $movie->getId() ?>"/>
 	<input class="register" type="submit"  value="Submit">
 </form>

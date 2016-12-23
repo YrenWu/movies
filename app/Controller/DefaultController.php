@@ -67,14 +67,18 @@ class DefaultController
 		$id = htmlentities($_GET['id']);
 		$movie =$this->movieManager->findOne($id);
 
-		View::show('admin/moviesForm.php', "Manage your movies", ['movie' => $movie, 'action' => "update"]);
+		View::show('admin/moviesForm.php', 
+					"Manage your movies", 
+					['movie' => $movie, 
+					'action' => "update"]);
 	}
 
 	public function create()
 	{
 		$movie = new Movie();
 		//récupération du film
-		View::show('admin/moviesForm.php', "Manage your movies", ['movie' => $movie, 'action' => 'create']);
+		View::show('admin/moviesForm.php', "Manage your movies", 
+				['movie' => $movie, 'action' => 'create']);
 	}
 
 	public function delete()
@@ -136,10 +140,10 @@ class DefaultController
 				}
 				// si l'action est update (marche pas)
 				if($_POST['action'] == 'update'){
+					$movie->setId(htmlentities($_POST['id']));
 					$this->movieManager->update($movie);
 				}
 				header("Location: " . BASE_URL . "admin/manage"); 
-
 				
 			}
 

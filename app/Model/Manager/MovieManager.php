@@ -43,7 +43,35 @@ class MovieManager
 	}
 	public function update(Movie $movie)
 	{
+		$sql = "UPDATE movies 
+				SET title=:title,
+				imdbId=:imdbId,
+				year=:year,
+				cast=:cast,
+				directors=:directors,
+				plot=:plot,
+				writers=:writers,
+				runtime=:runtime,
+				trailerUrl=:trailerUrl
+				WHERE id=:id";
 
+
+		$dbh = Db::getDbh();
+
+		$stmt = $dbh->prepare($sql);
+
+		$stmt->bindValue(':id', $movie->getId());
+		$stmt->bindValue(':title', $movie->getTitle());
+		$stmt->bindValue(':imdbId', $movie->getImdbId());
+		$stmt->bindValue(':year',  $movie->getYear());
+		$stmt->bindValue(':cast', $movie->getCast());
+		$stmt->bindValue(':directors', $movie->getDirectors());
+		$stmt->bindValue(':plot', $movie->getPlot());
+		$stmt->bindValue(':writers', $movie->getWriters());
+		$stmt->bindValue(':runtime', $movie->getRuntime());
+		$stmt->bindValue(':trailerUrl', $movie->getTrailerUrl());
+
+		$stmt->execute();
 	}
 
 

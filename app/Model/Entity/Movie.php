@@ -182,4 +182,9 @@ class Movie
 	{
 	    $this->writers = $writers;
 	}
+	 
+	public function setId($id)
+	{
+	    $this->id = $id;
+	}
 }
